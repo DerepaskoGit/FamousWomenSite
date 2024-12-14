@@ -1,1 +1,11 @@
-/FamousWomenSite/__pycache__
+# Игнорировать все __pycache__
+__pycache__/
+
+# Игнорировать скомпилированные файлы Python
+*.pyc
+*.pyo
+*.pyd
+
+# Игнорировать окружение виртуального Python
+venv/
+.env/
