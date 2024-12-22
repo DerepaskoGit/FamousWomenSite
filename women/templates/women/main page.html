@@ -7,7 +7,7 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    <p1>{{ menu|join:' | ' }}</p1>
+    <p><a href=""> {{ menu.2 }} </a></p>
     <h1>{{ title }}</h1>
     <ul>
       {% for title in posts %}
@@ -15,6 +15,7 @@
       <li>
         <h2>{{ title.title }}</h2>
         <p>{{ title.content }}</p>
+        <p><a href="{% url 'post' title.id %}">Читать пост</a></p>
         {% if not forloop.last %}
         <hr>
         {% endif %}

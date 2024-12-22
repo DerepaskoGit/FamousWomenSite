@@ -7,24 +7,16 @@ from django.urls import reverse
 def index(request):
     return HttpResponse('Страница приложения women')
 
-def categories(request, cat_id):
-    return HttpResponse(f'<h1>Страница категорий Women</h1><h2>id: {cat_id}</h2>')
-
-def categories_slug(request, cat_id):   
-        print(request.GET)
-        return HttpResponse(f'<h1>Страница категорий Women</h1><h2>slug: {cat_id}</h2>')
-
-def archive(request, year):
-     if year > 2024:
-        uri = reverse('cats_slug', args=('music', ))
-        return redirect(uri)
-     return HttpResponse(f'<h1>Архив </h1><h2>{year}</h2>')
-
 
 def page_404(request, exception):
      return HttpResponseNotFound(f'<h1>404</h1>')
 
-menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
+menu = [
+     {'title':'О сайте', 'url':'about'}, 
+     {'title':'Добавить статью', 'url':'addpage'}, 
+     {'title':'Обратная связь', 'url':'feedback'},
+     {'title':'Войти', 'url':'login'}
+     ]
 
 data_db = [
     {'id': 1, 'title': 'Анджелина Джоли', 'content': 'Биография Анджелины Джоли', 'is_published': True},
@@ -45,5 +37,16 @@ def about(request):
           'title':'О сайте',
           'text':'О сайте'
      }
-     return render(request, 'women/main page.html', context=data)
+     return render(request, 'women/about.html', context=data)
 
+def addpage(request):
+     return HttpResponse('<p> addpage </p>')
+
+def feadback(request):
+     return HttpResponse('<p> feadback </p>')
+
+def login(request):
+     return HttpResponse('<p> login </p>')
+
+def post(request, post_id):
+     return HttpResponse(f'<h2>Пост с id: {post_id}</h2>')
