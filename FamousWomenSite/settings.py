@@ -56,7 +56,7 @@ ROOT_URLCONF = 'FamousWomenSite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'FamousWomenSite' / 'templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

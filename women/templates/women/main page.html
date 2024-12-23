@@ -1,14 +1,8 @@
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="charset" content="utf8">
-    <meta http-equiv="content-type" content="text/html;">
+{% extends 'base.html' %}
+{% block content %}
 
-    <title>{{ title }}</title>
-  </head>
-  <body>
-    <p><a href=""> {{ menu.2 }} </a></p>
-    <h1>{{ title }}</h1>
+{% include 'includes/nav.html' %}
+
     <ul>
       {% for title in posts %}
       {% if title.is_published %}
@@ -23,5 +17,7 @@
       {% endif %}
       {% endfor %}
     </ul>
-  </body>
-</html>
+
+{% include 'includes/nav.html' %}
+
+{% endblock %}

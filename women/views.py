@@ -14,14 +14,16 @@ def page_404(request, exception):
 menu = [
      {'title':'О сайте', 'url':'about'}, 
      {'title':'Добавить статью', 'url':'addpage'}, 
-     {'title':'Обратная связь', 'url':'feedback'},
-     {'title':'Войти', 'url':'login'}
+     {'title':'Обратная связь', 'url':'feadback'},
+     {'title':'Войти', 'url':'login'},
+     {'title':'Главная страница', 'url':'main'}
      ]
+
 
 data_db = [
     {'id': 1, 'title': 'Анджелина Джоли', 'content': 'Биография Анджелины Джоли', 'is_published': True},
     {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'is_published': False},
-    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулия Робертс', 'is_published': True},
+    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулии Робертс', 'is_published': True},
 ]
 
 def main_page(request):
@@ -35,18 +37,34 @@ def main_page(request):
 def about(request):
      data = {
           'title':'О сайте',
-          'text':'О сайте'
+          'text':'О сайте',
+          'menu': menu,
      }
      return render(request, 'women/about.html', context=data)
 
 def addpage(request):
-     return HttpResponse('<p> addpage </p>')
+     data = {
+          'title':'Добавить статью',
+          'text':'Добавить статью',
+          'menu': menu,
+     }
+     return render(request, 'women/addpage.html', context=data)
 
 def feadback(request):
-     return HttpResponse('<p> feadback </p>')
+     data = {
+          'title':'Обратная связь',
+          'text':'Обратная связь',
+          'menu': menu,
+     }
+     return render(request, 'women/feadback.html', context=data)
 
 def login(request):
-     return HttpResponse('<p> login </p>')
+     data = {
+          'title':'Авторизация',
+          'text':'Авторизация',
+          'menu': menu,
+     }
+     return render(request, 'women/login.html', context=data)
 
 def post(request, post_id):
      return HttpResponse(f'<h2>Пост с id: {post_id}</h2>')
