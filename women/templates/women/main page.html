@@ -1,23 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
-{% include 'includes/nav.html' %}
-
-    <ul>
-      {% for title in posts %}
-      {% if title.is_published %}
-      <li>
-        <h2>{{ title.title }}</h2>
-        <p>{{ title.content }}</p>
-        <p><a href="{% url 'post' title.id %}">Читать пост</a></p>
-        {% if not forloop.last %}
-        <hr>
-        {% endif %}
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
-
-{% include 'includes/nav.html' %}
-
-{% endblock %}
+    <div class="flex-container">
+        <div class="content-left">
+          <p>Navbar navigation links build on our .nav options with their own modifier class and require the use of toggler classes for proper responsive styling. Navigation in navbars will also grow to occupy as much horizontal space as possible to keep your navbar contents securely aligned.</p>
+        </div>
+        {% include 'includes/nav.html' %}
+    </div>
+{% endblock %} 

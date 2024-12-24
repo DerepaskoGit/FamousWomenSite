@@ -1,5 +1,18 @@
-<nav>
-    <a href="#">Актрисы</a> |
-    <a href="#">Певицы</a> |
-    <a href="#">Спортсменки</a>
+{% load women_tags %}
+{% get_cat as cats %}
+<nav>    
+    <div class="content-right">
+        <div class="p-1">
+            <a href="{% url cats.0.url %}" class="category">{{ cats.0.name }}</a>
+        </div>
+        <div class="p-2">
+            <a href="{{ cats.1.url }}">{{ cats.1.name }}</a>
+        </div>
+        <div class="p-2">
+            <a href="{{ cats.2.url }}">{{ cats.2.name }}</a>
+        </div>
+        <div class="p-2">
+            <a href="{{ cats.3.url }}">{{ cats.3.name }}</a>
+        </div>
+    </div>
 </nav>

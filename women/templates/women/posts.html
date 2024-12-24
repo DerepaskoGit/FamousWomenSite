@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="flex-container">
+        <div class="content-left">
+            <ul>
+                {% for title in posts %}
+                {% if title.is_published %}
+                <li>
+                    <h2>{{ title.title }}</h2>
+                    {% autoescape off %}
+                    <p>{{ title.content|truncatewords:25 }}</p>
+                    {% endautoescape %}
+                    <p><a href="{% url 'post' title.id %}">Читать пост</a></p>
+                    {% if not forloop.last %}
+                    <hr>
+                    {% endif %}
+                </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% include 'includes/nav.html' %}
+    </div>
+{% endblock %} 

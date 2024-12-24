@@ -1,0 +1,43 @@
+.flex-container {
+	display: flex;
+	align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+.content-left {
+	margin-top: 2rem;
+	margin-left: 14rem;
+	margin-right: 35rem;
+}
+.content-right {
+	position: fixed;  /* Фиксируем блок */
+    right: 0;         /* Прижимаем к правому краю */
+    top: 350px;         /* Центрируем по вертикали */
+    transform: translateY(-50%);  /* Смещаем вверх на 50% высоты блока */
+    width: 200px;     /* Устанавливаем ширину блока */
+}
+
+.about{
+	margin-left: 14rem;
+	margin-top: 2rem;
+}
+
+.addpage{
+	margin-left: 14rem;
+	margin-top: 2rem;
+}
+
+.login{
+	margin-left: 14rem;
+	margin-top: 2rem;
+}
+
+a {
+    color: #e35102;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.category {
+	color: rgb(123, 43, 29);
+	font-weight: 400;
+	text-decoration: underline;
+}
