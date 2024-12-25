@@ -41,3 +41,8 @@ a.category {
 	font-weight: 400;
 	text-decoration: underline;
 }
+
+.category-list {
+	font-size: 50px;
+}
+
