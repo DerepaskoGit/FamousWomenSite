@@ -1,8 +1,8 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-# Create your views here.
+from women.models import Data_db
 
 def index(request):
     return HttpResponse('Страница приложения women')
@@ -21,15 +21,6 @@ menu = [
      ]
 
 
-data_db = [
-    {'id': 1, 'title': 'Анджелина Джоли', 'content': '''<b>Анджели́на Джоли́</b> (англ. Angelina Jolie), до 2002 года Анджелина Джоли Войт 
-     (англ. Voight); род. 4 июня 1975, Лос-Анджелес) — американская актриса, кинорежиссёр, сценарист, продюсер и общественный деятель. 
-     Обладательница множества престижных наград, включая «Оскар», премию «Тони» и три «Золотых глобуса». Джоли неоднократно признавалась
-      самой высокооплачиваемой актрисой Голливуда.''', 'is_published': True},
-    {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'is_published': False},
-    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулии Робертс', 'is_published': True},
-]
-
 cat_db = [
      {'url': 'category', 'name': 'Категории:'},
      {'url': '#', 'name': 'Актрисы'},
@@ -38,10 +29,12 @@ cat_db = [
 ]
 
 def main_page(request):
+     posts = Data_db.objects.filter(is_published=1)
+
      data = {
           'title': 'Главная страница',  
           'menu':menu,
-          'posts': data_db
+          'posts': posts
           }
      return render(request, 'women/main page.html', context=data)
 
@@ -77,15 +70,26 @@ def login(request):
      }
      return render(request, 'women/login.html', context=data)
 
-def post(request, post_id):
-     return HttpResponse(f'<h2>Пост с id: {post_id}</h2>')
+def post(request, post_slug):
+     post = get_object_or_404(Data_db, slug=post_slug)
+
+     data = {
+          'title':post.title,
+          'menu':menu,
+          'post':post,
+          'cat_selected': 1,
+     }
+
+     return render(request, 'women/post.html', context=data)
 
 def posts(request):
+     posts = Data_db.objects.filter(is_published=1)
+
      data = {
           'title':'Посты',
           'text':'Посты',
           'menu': menu,
-          'posts': data_db
+          'posts': posts
      }
      return render(request, 'women/posts.html', context=data)
 

@@ -10,7 +10,7 @@ urlpatterns = [
     path('addpage/', views.addpage, name='addpage'),
     path('feadback/', views.feadback, name='feadback'),
     path('login/', views.login, name='login'),
-    path('main/post/<int:post_id>/', views.post, name='post'),
+    path('posts/post/<slug:post_slug>/', views.post, name='post'),
     path('posts/', views.posts, name='posts'),
     path('cats/', views.category, name='category')
 ]
