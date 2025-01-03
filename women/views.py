@@ -29,7 +29,7 @@ cat_db = [
 ]
 
 def main_page(request):
-     posts = Data_db.objects.filter(is_published=1)
+     posts = Data_db.Published_manager.all()
 
      data = {
           'title': 'Главная страница',  
